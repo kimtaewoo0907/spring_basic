@@ -33,7 +33,7 @@ public class HelloController {
         return "hello-get-req";
     }
 
-    @GetMapping("hello-get-form-req")
+    @GetMapping("hello-post-form-req")
     public String helloGetFormReq(){
         return "hello-post-form-req";
     }
@@ -73,6 +73,20 @@ public class HelloController {
         System.out.println("이메일 : " + hello.getEmail());
         System.out.println("비밀번호 : " + hello.getPassword());
         return "ok";
+    }
+
+    // ResponseBody 어노테이션이 붙어있고, return타입이 객체이면 sprnig이 json형태로 변환해준다
+    @PostMapping("hello-json-response")
+    @ResponseBody
+    public GoodBye helloJsonResponse(@RequestBody Hello hello) {
+        System.out.println("이름 : " + hello.getName());
+        System.out.println("이메일 : " + hello.getEmail());
+        System.out.println("비밀번호 : " + hello.getPassword());
+        GoodBye goodBye1 = new GoodBye();
+        goodBye1.setName(hello.getName());
+        goodBye1.setEmail(hello.getEmail());
+        goodBye1.setComments("Thank you");
+        return goodBye1;
     }
     // 사용자가 서버로 데이터를 보내는 방식에는 총 3가지가 있다
     // 1.?를 통해 parameter 값을 넣어 보내는 방식 : 대부분 get 요청시 사용
