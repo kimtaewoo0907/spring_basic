@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -53,8 +54,11 @@ public class HelloController {
 
     // 테스트를 할 때에, localhost:8080/hello-parameter?test=hello
     @GetMapping("hello-parameter")
-    @ResponseBody
+    @ResponseStatus(HttpStatus.FORBIDDEN)
     public String helloParameter(@RequestParam(value = "test")String mytest) {
+//        if(true) {
+//            throw new AccessDeniedException("권한이 없습니다");
+//        }
         System.out.println("클라이언트가 보내온 parameter는? " + mytest);
         return "ok";
     }
@@ -75,7 +79,7 @@ public class HelloController {
         return "ok";
     }
 
-    // ResponseBody 어노테이션이 붙어있고, return타입이 객체이면 sprnig이 json형태로 변환해준다
+    // ResponseBody 어노테이션이 붙어있고, return타입(아래에서는 GoodBye)이 객체이면 spring이 json형태로 변환해준다
     @PostMapping("hello-json-response")
     @ResponseBody
     public GoodBye helloJsonResponse(@RequestBody Hello hello) {
