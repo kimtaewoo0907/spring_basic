@@ -100,4 +100,6 @@ public class HelloController {
     // json데이터란 {"key1":"value1", "key2":"value2"}의 형식을 취하는 데이터이다
     // 현대적인 웹 서비스에서 대부분의 데이터를 주고받을 때 json을 사용한다
     // json html의 form 태그에 넣어서 보내는 방식이 아니다 보니, Ajax, react 이런 프레임워크를 사용하게 된다
+
+
 }
