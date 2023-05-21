@@ -19,3 +19,6 @@ spring:
       ddl-auto: update
     # jpa가 자동으로 쿼리를 생성할 때, 쿼리가 console창에 보여지도록 하는 설정
     show_sql: true
+
+mybatis:
+  mapper-locations: classpath:/mapper/**/*.xml

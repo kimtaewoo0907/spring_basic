@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mabatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!--아래 경로는 mybatis repository 파일의 위츼를 명시하는 것-->
-<mapper namespace="com.example.demo.Repository.MemberRepository">
+<!--아래 경로는 mybatis repository 파일의 위치를 명시하는 것-->
+<mapper namespace="com.example.demo.repository.MemberMybatisRepository">
     <insert id="save">
         insert into member(name, email, password) values(#{name}, #{email}, #{password})
     </insert>

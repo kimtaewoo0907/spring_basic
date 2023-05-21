@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.Domain.Member;
-import com.example.demo.Service.MemberService;
+import com.example.demo.domain.Member;
+import com.example.demo.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Controller()
@@ -21,7 +22,7 @@ public class MemberJsonController {
     @ResponseBody
     public String memberCreate(@RequestParam(value = "name")String name,
                                @RequestParam(value = "email")String email,
-                               @RequestParam(value = "password")String password) {
+                               @RequestParam(value = "password")String password) throws SQLException {
         Member member1 = new Member();
         member1.setName(name);
         member1.setEmail(email);
@@ -32,14 +33,14 @@ public class MemberJsonController {
 
     @GetMapping("json/members")
     @ResponseBody
-    public List<Member> memberFindAll() {
+    public List<Member> memberFindAll() throws SQLException {
         List<Member> members = memberService.findAll();
         return members;
     }
 
     @GetMapping("json/member")
     @ResponseBody
-    public Member memberFindById(@RequestParam(value = "id")Long myId) {
+    public Member memberFindById(@RequestParam(value = "id")Long myId) throws SQLException {
         Member member = memberService.findById(myId);
         return member;
     }
